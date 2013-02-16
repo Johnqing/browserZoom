@@ -14,7 +14,7 @@
 	win.detectZoom = function(){
 		switch(user_agent()){
 			case 'ie':
-				var x = Math.round((screen.deviceXDPI / screen.logicalXDPI) * 100);
+				var x = Math.round((win.screen.deviceXDPI / win.screen.logicalXDPI) * 100);
 				break;
 			case 'firefox':
                 // 检测设备缩放比例
@@ -22,13 +22,13 @@
 				x = Math.round(x * 100);
 				break;
             case 'opera':
-                var x = window.outerWidth / window.innerWidth;
+                var x = win.outerWidth / win.innerWidth;
                 x = Math.round(x * 100);
                 break;
 			default :
 				var tempElem = document.createElement('div');
 				document.body.appendChild(tempElem);
-				var x = window.screen.width/tempElem.clientWidth;
+				var x = win.screen.width/tempElem.clientWidth;
 				x = Math.round(x*100);
 		}
 		alert("当前缩放比例："+x + "%");
