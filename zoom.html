@@ -27,9 +27,17 @@
                 x = Math.round(x * 100);
                 break;
 			default :
+                /*
+                * webkit下使用字号大小来实现。
+                * 字体设置太小会被浏览器忽略。
+                * webkit-text-size-adjust是禁止浏览器缩放
+                * position是为了隐藏div
+                */
 				var tempElem = document.createElement('div');
+                tempElem.innerHTML = '1';
+                tempElem.setAttribute('style','font:100px/1em sans-serif;-webkit-text-size-adjust:none;position: absolute;top:-100%;');
 				document.body.appendChild(tempElem);
-				var x = win.screen.width/tempElem.clientWidth;
+				var x = 100/tempElem.clientHeight;
 				x = Math.round(x*100);
 		}
 		alert("当前缩放比例："+x + "%");
