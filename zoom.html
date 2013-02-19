@@ -40,8 +40,33 @@
 				var x = 100/tempElem.clientHeight;
 				x = Math.round(x*100);
 		}
-		alert("当前缩放比例："+x + "%");
+        if (x!=100) {
+            var div = document.createElement('div');
+            div.innerHTML = '您的浏览器比例：'+x+'%\r<button id="reZoom">点击恢复100%</button>';
+            document.body.appendChild(div);
+            document.getElementById('reZoom').onclick = function(){
+                reZoom(x);
+            }
+        };
+		// alert("当前缩放比例："+x + "%");
 	}
+    /*
+    * 非完美解决恢复正常浏览器缩放比例
+    * ff不支持zoom，所以采用css3的transform来进行缩放
+    * transform-origin是用来改变位置
+    */
+    function reZoom(x){
+        var zoom = Math.round(100/(x/100));
+        switch(user_agent()){
+            case 'firefox':
+                var style = document.createElement('style');
+                style.innerHTML = 'body {transform: scale('+zoom/100+');-moz-transform-origin:top left;}';
+                document.body.appendChild(style);
+                break;
+            default:
+                document.body.style.zoom = zoom +'%';
+        }
+    }
     /* 设备检测
 	*  继续探索一种不使用mediaQuery的方法，求推荐
     */
