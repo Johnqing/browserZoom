@@ -13,6 +13,7 @@
 (function(win){
     'use strict';
 	win.detectZoom = function(){
+        if (checkMobile) {return;};
 		switch(user_agent()){
 			case 'ie':
 				var x = Math.round((win.screen.deviceXDPI / win.screen.logicalXDPI) * 100);
@@ -127,6 +128,25 @@
         	return 'opera';
         };
 	}
+    var checkMobile = function(){
+        var pda_user_agent_list = ['iPhone','Android','Symbian OS','Windows','BlackBerry','Opera Mobi','iPad','iPod','Windows Phone','HTC','SonyEricsson','Nokia'];
+        var pda_app_name_list =['Microsoft Pocket Internet Explorer'];
+
+        var user_agent = navigator.userAgent.toString();        
+        for (var i=0; i<pda_user_agent_list.length; i++) {
+            if (user_agent.indexOf(pda_user_agent_list[i]) >= 0) {
+                return true;
+            }
+        }
+        var appName = navigator.appName.toString();
+        for (var i=0; i<pda_app_name_list.length; i++) {
+            if (user_agent.indexOf(pda_app_name_list[i]) >= 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 })(this);
 detectZoom();
 </script>
