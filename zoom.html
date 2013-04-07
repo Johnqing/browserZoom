@@ -13,7 +13,7 @@
 (function(win){
     'use strict';
 	win.detectZoom = function(){
-        if (checkMobile) {return;};
+        if (checkMobile()) {return;};
 		switch(user_agent()){
 			case 'ie':
 				var x = Math.round((win.screen.deviceXDPI / win.screen.logicalXDPI) * 100);
@@ -113,7 +113,7 @@
             }
         }
     };
-	function user_agent(){
+    function user_agent(){
         var ua = navigator.userAgent.toLowerCase();
         if (ua.indexOf('msie')>=0) {
         	return 'ie';
@@ -127,7 +127,7 @@
         if (ua.indexOf('opera')>=0) {
         	return 'opera';
         };
-	}
+    }
     var checkMobile = function(){
         var pda_user_agent_list = ['iPhone','Android','Symbian OS','Windows','BlackBerry','Opera Mobi','iPad','iPod','Windows Phone','HTC','SonyEricsson','Nokia'];
         var pda_app_name_list =['Microsoft Pocket Internet Explorer'];
