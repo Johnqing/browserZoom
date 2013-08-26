@@ -9,6 +9,10 @@
 detectZoom();
 </pre>
 
+##文档##
+
++ http://www.quirksmode.org/blog/archives/2012/06/devicepixelrati.html
+
 ##更新记录##
 
 ###2013.8.26##
