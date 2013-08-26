@@ -11,4 +11,7 @@ detectZoom();
 
 ##更新记录##
 
-+ 2013.8.26 修复webkit不支持text-size-adjust，造成的bug
+###2013.8.26##
+
++ 修复webkit不支持text-size-adjust，造成的bug
++ 代码优化
