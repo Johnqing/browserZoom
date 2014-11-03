@@ -6,7 +6,8 @@
 ##用法##
 
 <pre>
-detectZoom();
+var zoom = detectZoom();
+alert(zoom);
 </pre>
 
 ##文档##
